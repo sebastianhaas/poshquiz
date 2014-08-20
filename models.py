@@ -16,8 +16,8 @@ class BaseModel(Model):
 
 class Message(BaseModel):
     datetime = DateTimeField()
+    sender = CharField(max_length=255)
     text = TextField()
-    outgoing = BooleanField()
     messenger = CharField(max_length=50)
 
 
@@ -25,3 +25,4 @@ class Message(BaseModel):
 def create_tables():
     database.connect()
     Message.create_table()
+    database.close()
